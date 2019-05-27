@@ -1,0 +1,41 @@
+<html>
+	<link rel="stylesheet" href="css.css">
+	<head>
+		<title>Formular absenden</title>
+		
+		<script language='javascript'>
+		
+			function getUrlVars() {
+	    		var vars = {};
+	    		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	       		vars[key] = value;
+	    		});
+	    		return vars;
+			}
+		
+			function setup(){
+				var plz = getUrlVars()["plz"];
+				var land = getUrlVars()["land"];
+				
+				if(land=="deutschland" && plz.length>4){
+					document.getElementById("errormsg").style.visibility = "hidden"; 
+				}else if(land=="afghanistan" && plz.length>3){
+					document.getElementById("errormsg").style.visibility = "hidden"; 
+				}else{
+					document.getElementById("successmsg").style.visibility = "hidden"; 
+				}
+			}
+			
+		</script>
+	</head>
+	<body align='center' width='100%' onload='setup()'>
+				<div class="error-msg" id='errormsg'>
+				   Die Postleitzahl muss 5-Stellig sein!
+				</div>	 
+				
+				<div class="success-msg" id='successmsg'>
+				   Erfolgreich eingetragen!
+				</div>	
+				
+	</body>	
+</html>
