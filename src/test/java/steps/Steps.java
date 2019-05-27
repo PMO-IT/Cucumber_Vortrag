@@ -18,14 +18,14 @@ public class Steps {
     private WebDriver driver;
 
     private void setupFirefoxDriver() {
-        System.setProperty("webdriver.gecko.driver", "C:\\dev\\geckodriver\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
         driver = new FirefoxDriver();
     }
 
     @Given("^User navigates to form website$")
     public void user_navigates_to_form_website() throws Throwable {
         setupFirefoxDriver();
-        driver.get("file:///C:/Users/NoName/eclipse-workspace/Kontaktformular/index.html");
+        driver.get("/Kontaktformular/index.html");
         FormPage formpage = new FormPage(driver);
         String actualTitle = formpage.getTitle();
         assertEquals(actualTitle, "Formular");
